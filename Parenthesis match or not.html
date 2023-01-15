@@ -1,0 +1,84 @@
+<html>
+  <body>
+    <h1>Parenthesis match or not</h1>
+    <h1>Exercise10A</h1>
+    <script>
+      class Stack {
+        constructor(size) {
+          this.Arr = new Array(size);
+          this.Top = -1;
+          this.size = size;
+        }
+        isEmpty() {
+          if (this.Top == -1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.Top == this.size - 1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        push(data) {
+          if (this.isFull()) {
+            document.write('Stack is full...');
+            return;
+          } else {
+            this.Top++;
+            this.Arr[this.Top] = data;
+          }
+        }
+
+        pop() {
+          if (this.isEmpty()) {
+            document.write('Stack is empty...');
+            return;
+          } else {
+            var ch = this.Arr[this.Top];
+            this.Top--;
+            return ch;
+          }
+        }
+        checkvalidparenthesis(exp) {
+          var length = exp.length;
+
+          for (let i = 0; i < length; i++) {
+            //document.write(exp[i]);
+            if (exp[i] == '(') {
+              this.push(exp[i]);
+            } else if (exp[i] == ')') {
+              if (this.isEmpty()) {
+                return false;
+              }
+              this.pop();
+            }
+          }
+          if (this.isEmpty()) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        display() {
+          var str = '';
+          for (let i = 0; i <= this.Top; i++) {
+            str = str + this.Arr[i] + '->';
+          }
+          document.write(str);
+        }
+      }
+
+      let sobj = new Stack(10);
+      var exp = prompt('Enter the Expression');
+      if (sobj.checkvalidparenthesis(exp)) {
+        document.write('Parenthesis are match...');
+      } else {
+        document.write('Parenthesis are not match...');
+      }
+    </script>
+  </body>
+</html>

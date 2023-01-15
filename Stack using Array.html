@@ -1,0 +1,63 @@
+<html>
+  <body>
+    <h1>Stack using Array</h1>
+    <h1>Exercise8</h1>
+    <script>
+      class Stack {
+        constructor(size) {
+          this.Arr = new Array(size);
+          this.Top = -1;
+          this.size = size;
+        }
+        isEmpty() {
+          if (this.Top == -1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.Top == this.size - 1) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        push(data) {
+          if (this.isFull()) {
+            document.write('Stack is full');
+          } else {
+            this.Top++;
+            this.Arr[this.Top] = data;
+          }
+        }
+        pop() {
+          if (this.isEmpty()) {
+            document.write('Stack is empty');
+          } else {
+            var iNo = this.Arr[this.Top];
+            this.Top--;
+          }
+          return iNo;
+        }
+        display() {
+          var str = '';
+          for (var i = 0; i <= this.Top; i++) {
+            str = str + this.Arr[i] + ' ';
+          }
+          document.write(str);
+        }
+      }
+      const sobj = new Stack();
+      sobj.push(10);
+      sobj.push(20);
+      sobj.push(30);
+      sobj.push(40);
+      sobj.push(50);
+      document.write('Poped element is ' + sobj.pop());
+      document.write('<br>');
+
+      sobj.display();
+    </script>
+  </body>
+</html>

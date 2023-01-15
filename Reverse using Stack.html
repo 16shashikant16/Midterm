@@ -1,0 +1,84 @@
+<html>
+  <body>
+    <h1>Reverse String using Stack</h1>
+    <h1>Exercise10B</h1>
+    <script>
+      class SNode {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+      class Stack {
+        constructor(data) {
+          this.Top = null;
+          this.cnt = 0;
+          this.size = data;
+        }
+        isEmpty() {
+          if (this.Top == null) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        isFull() {
+          if (this.cnt == this.size) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+        push(data) {
+          if (this.isFull()) {
+            document.write('Stack is full');
+            return;
+          } else {
+            var newNode = new SNode(data);
+            newNode.next = this.Top;
+            this.Top = newNode;
+            this.cnt++;
+          }
+        }
+        pop() {
+          if (this.isEmpty()) {
+            document.write('Stack is empty');
+            return;
+          } else {
+            var iNo = this.Top.data;
+            this.Top = this.Top.next;
+            this.cnt--;
+            return iNo;
+          }
+        }
+        display() {
+          var temp = this.Top;
+          var str = '';
+          while (temp != null) {
+            str = str + temp.data + '->';
+            temp = temp.next;
+          }
+          document.write(str);
+        }
+        reverseString(name) {
+          var length = name.length;
+          for (let i = 0; i < length; i++) {
+            this.push(name[i]);
+          }
+          var str = '';
+          while (!this.isEmpty()) {
+            str = str + this.Top.data;
+            this.pop();
+          }
+          return str;
+        }
+      }
+      const sobj = new Stack(10);
+
+      let str = prompt('Enter the String to reverse');
+      const sobj1 = new Stack(str.length);
+      document.write('Original String is->' + str + '<br>');
+      document.write('Reverse String ->' + sobj1.reverseString(str));
+    </script>
+  </body>
+</html>
