@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Font Size Changer</title>
+  <style>
+    #text {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <input type="range" id="fontRange" min="8" max="50" value="16">
+  <br>
+  <span id="text">Text</span>
+
+  <script>
+    var rangeInput = document.getElementById("fontRange");
+    var textElement = document.getElementById("text");
+
+    rangeInput.addEventListener("input", function() {
+      var fontSize = rangeInput.value + "px";
+      textElement.style.fontSize = fontSize;
+    });
+  </script>
+</body>
+</html>

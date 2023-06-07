@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rectangle Drawing with Animation</title>
+  <style>
+    svg {
+      width: 400px;
+      height: 300px;
+      border: 1px solid black;
+    }
+    rect {
+      fill: olivedrab;
+    }
+  </style>
+</head>
+<body>
+  <svg id="mySvg">
+    <rect id="myRect" width="100" height="50" x="50" y="50" />
+  </svg>
+
+  <script>
+    var rect = document.getElementById("myRect");
+    rect.addEventListener("mouseover", function() {
+      rect.setAttribute("width", "200");
+      rect.setAttribute("height", "100");
+      rect.setAttribute("x", "0");
+      rect.setAttribute("y", "0");
+    });
+    rect.addEventListener("mouseout", function() {
+      rect.setAttribute("width", "100");
+      rect.setAttribute("height", "50");
+      rect.setAttribute("x", "50");
+      rect.setAttribute("y", "50");
+    });
+  </script>
+</body>
+</html>

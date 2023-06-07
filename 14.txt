@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program3</title>
+</head>
+<body>
+    <audio controls loop autoplay >
+        <source src="music.mp3" type="audio/mp3">
+    </audio> <br>
+    <video width="320" height="240" controls>
+        <source src="nature.mp4" type="video/mp4">
+      </video>
+    
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .myCanvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="myCanvas" width="500" height="500"></canvas>
+
+    <script>
+      let canvas = document.querySelector('.myCanvas');
+      let ctx = canvas.getContext('2d');
+
+      canvas.addEventListener('click', function (e) {
+        let x = e.clientX;
+        let y = e.clientY;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = '#222';
+        ctx.fill();
+      });
+    </script>
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rectangle Drawing with Animation</title>
+  <style>
+    svg {
+      width: 400px;
+      height: 300px;
+      border: 1px solid black;
+    }
+    rect {
+      fill: olivedrab;
+    }
+  </style>
+</head>
+<body>
+  <svg id="mySvg">
+    <rect id="myRect" width="100" height="50" x="50" y="50" />
+  </svg>
+
+  <script>
+    var rect = document.getElementById("myRect");
+    rect.addEventListener("mouseover", function() {
+      rect.setAttribute("width", "200");
+      rect.setAttribute("height", "100");
+      rect.setAttribute("x", "0");
+      rect.setAttribute("y", "0");
+    });
+    rect.addEventListener("mouseout", function() {
+      rect.setAttribute("width", "100");
+      rect.setAttribute("height", "50");
+      rect.setAttribute("x", "50");
+      rect.setAttribute("y", "50");
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Styles</title>
+  <style>
+    /* Unvisited Links */
+    a:link {
+      background-color: lightblue;
+    }
+
+    /* Visited Links */
+    a:visited {
+      background-color: lightblue;
+    }
+
+    /* Hovered Links */
+    a:hover {
+      background-color: green;
+    }
+
+    /* Active Links */
+    a:active {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <a href="#">Unvisited Link</a>
+  <br>
+  <a href="#" visited>Visited Link</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- styles -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .image-container {
+        max-width: 768rem;
+        width: 90vw;
+        height: 50vh;
+        margin: auto;
+        display: grid;
+        place-items: center;
+      }
+      .img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 0.375rem;
+        transition: all 1s linear;
+      }
+      .img:hover {
+        width: 15rem;
+        height: 15rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <img class="img" src="heart.jpg" alt="heart" />
+    </div>
+  </body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hover Effects</title>
+  <style>
+    /* Image Hover Effect */
+    .image-container {
+      display: inline-block;
+      transition: transform 0.5s;
+    }
+    .image-container:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Text Size Change */
+    .text-container {
+      display: inline-block;
+      transition: font-size 0.5s;
+      cursor: pointer;
+    }
+    .text-container:hover {
+      font-size: 24px;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="image.jpg" alt="Image">
+  </div>
+  <br>
+  <div class="text-container">
+    Hover Me
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+<?php 
+  $small_alpha = "abcdefghijklmnopqrstuvwxyz";
+  $capital_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $numbers = "0123456789";
+  $text = $small_alpha.$capital_alpha.$numbers;
+
+
+  function generatePassword(){
+    global $text;
+    $password = substr(str_shuffle($text), 0, 10 );
+    echo "password is " . $password . " <br>";
+
+    $pattern = '/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{10}/';
+    if (preg_match($pattern, $password)) {
+        return $password;
+    } 
+    return generatePassword();
+  }
+
+  echo generatePassword();
+?> 
+
+
+
+
+
+<?php 
+ // using loop
+ function fibonacci_using_loop($n){
+  $a = 0;
+  $b = 1;
+  echo $a . "  ";
+  echo $b . "  ";
+  for($i = 2; $i<$n; $i++){
+   $c= $a+$b;
+   echo $c . "  ";
+   $a = $b;
+   $b = $c;
+  }
+ }
+ echo "fibonacci series using loop <br>";
+ fibonacci_using_loop(7);
+
+ // using recursion
+ function fibonacci_using_recursion($n, $a=0, $b=1){
+  if($n==0){
+   return;
+  }
+  echo $a . "  ";
+  fibonacci_using_recursion($n-1, $b, $a+$b);
+ }
+
+ echo "<br> <br>";
+ echo "fibonacci series using recursion <br>";
+ echo fibonacci_using_recursion(7);
+?>
+
